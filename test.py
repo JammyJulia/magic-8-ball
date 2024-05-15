@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # pylint: disable=unused-argument
 # This program is dedicated to the public domain under the CC0 license.
+answer_list = ['Meow', 'Ask your friend' , 'It is certain', 'Reply hazy, try again', 'Don’t count on it', 'It is decidedly so', 'Ask again later', 'My reply is no', 'Without a doubt', 'Better not tell you now', 'My sources say no', 'Yes definitely', 'Cannot predict now', 'Outlook not so good', 'You may rely on it', 'Concentrate and ask again', 'Very doubtful', 'As I see it, yes', 'Most likely', 'Outlook good', 'Yes', 'Signs point to yes']
 
 """
 Basic example for a bot that uses inline keyboards. For an in-depth explanation, check out
@@ -23,13 +24,13 @@ logger = logging.getLogger(__name__)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Sends a message with three inline buttons attached."""
-    keyboard = [
-        [
-            InlineKeyboardButton("Option 1", callback_data="1"),
-            InlineKeyboardButton("Option 2", callback_data="2"),
-        ],
-        [InlineKeyboardButton("Option 3", callback_data="3")],
-    ]
+    count = 1
+    keyboard = []
+    for answer in answer_list:
+        keyboard.append([InlineKeyboardButton(answer, callback_data=count)])
+        count +=1
+    print(keyboard)
+
 
     reply_markup = InlineKeyboardMarkup(keyboard)
 
