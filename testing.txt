@@ -1,0 +1,46 @@
+Happy path:
+-User writes '/ask Will i get a perfect grade?', bot responds with: 'Without a doubt' and adds that to history
+-User writes '/add idk.', bot responds with: 'New answer succesfully added' and adds the answer to the users answer list
+
+Use cases:
+-User asks a questions, receives first answer, then rerolls for another answer and tries to reroll again, bot responds: 'You have already rerolled on this question'
+-User writes '/ask Should i go to bed now? Its 1 am. ', bot responds with: 'Ask again later' and adds that to history
+-User writes 'remove' the bot doesnt respond.
+-User writes '/history' before having asked any question, bot responds with: 'You dont have any history yet'
+
+Edge cases:
+-User sends command '/ask' without providing a question, bot responds: 'No question provided'
+-User uses command '/remove' multiple times, selecting every answer and ending up with an empty answer list, then writes '/ask haha got you' the bot responds: 'Answer list is empty, add to it using /add [answer]'
+-User writes command '/add Yes ofc' 30 times, then writes '/ask am i the best?' and the bot still responds: 'My reply is no'
+-User sends command '/ask 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥', bot responds: 'Meow'
+
+
+
+
+
+
+
+
+*Will remove later:
+Specification:
+- Users can ask questions and receive answers from a predefined or custom list of responses.
+- Users can reroll for a different answer for the most recent question.
+- Users can add custom answers to their list of potential responses.
+- Users can remove custom answers from their list.
+- Program saves each round to history, also keeping track if it was rerolled and adding the new answer as well.
+- Users can view the last 10 questions they asked and their respective answers. 
+Output Display:
+- After the /ask command, displays a shuffling animation before showing the answer.
+- After the /add command, sends a message stating that the action was complete.
+- After the /remove command,  displays a message stating that the action was complete.
+- After /history command, desplays the last 10 rounds which include the rerolls
+Input and output examples:
+- Input: /ask will tomorrow be a good day?
+- Output: *shuffling animation* , then  ‘Without a doubt’
+
+Iterations:
+1. Constructing main tasks of the bot like randomized answers, adding/removing from answer list
+2. Implementing JSON database to store the history of each users rounds and custom answers.
+
+Documentations:
+-Python Telegram Bot Documentation: https://docs.python-telegram-bot.org/en/stable/index.html
